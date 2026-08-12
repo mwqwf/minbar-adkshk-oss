@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ⛔ لا تُعِد statusBarColor/navigationBarColor: متوقّفة في أندرويد 15
+         ويرصدها فحص Play. التباين يُضبط برمجيّاً في MainActivity. -->
+    <style name="Theme.Minbar" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">@font/amiri</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

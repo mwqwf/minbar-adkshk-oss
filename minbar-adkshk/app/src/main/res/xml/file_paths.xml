@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  مسارات FileProvider لمشاركة الملف الصوتي نفسه بعد تنزيله.
+  المسار الفعليّ للتنزيلات هو `filesDir/lessons` (انظر DownloadRepository:
+  `File(appContext.filesDir, "lessons")`)، فهو أوّل مدخل هنا وأدقّه.
+  المداخل الأخرى شبكة أمان لملفات محفوظة بمسارات قديمة أو مؤقّتة — إن لم
+  يقع الملف تحت أيّ منها ترتدّ المشاركة إلى النصّ بلا أي انهيار.
+-->
+<paths>
+    <files-path
+        name="lessons"
+        path="lessons/" />
+    <files-path
+        name="app_files"
+        path="." />
+    <cache-path
+        name="app_cache"
+        path="." />
+    <external-files-path
+        name="external_files"
+        path="." />
+    <external-cache-path
+        name="external_cache"
+        path="." />
+</paths>

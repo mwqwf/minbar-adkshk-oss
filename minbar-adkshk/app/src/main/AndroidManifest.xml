@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- تنزيل الدروس يبدأه المستخدم: وظيفة نقل بيانات بمبادرة المستخدم
+         (أندرويد 14+) بدل خدمة أمامية من نوع dataSync. -->
+    <uses-permission android:name="android.permission.RUN_USER_INITIATED_JOBS" />
+
+    <application
+        android:name=".MinbarApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${appLabel}"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Minbar"
+        android:usesCleartextTraffic="false">
+
+        <!-- MinbarApplication configures WorkManager with a JobScheduler ID range
+             that cannot collide with the user-initiated download job. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                tools:node="remove" />
+        </provider>
+
+        <!-- مشاركة الملف الصوتي نفسه بعد تنزيله (سلوك الأصل: محمّل ⇒ نشارك
+             الملف، غير محمّل ⇒ نشارك الرابط). الإذن يُمنح لكل نيّة على حدة
+             عبر FLAG_GRANT_READ_URI_PERMISSION فلا يُصدَّر المزوّد إطلاقاً. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- شبكة أمان: أيّ رسالة FCM تُشير إلى قناة غير موجودة تسقط على
+             هذه القناة بدل أن تُحجب. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="minbar_content" />
+
+        <!-- ⛔ أندرويد أوتو مُزال عمداً (2026-07-29): رفضت Google النشر بسبب
+             «التطبيق لا يشغّل الصوت» على شاشة السيارة، والتطبيق لا يستهدف
+             الاستعمال داخل السيارة أصلاً. الحلّ الذي تنصّ عليه رسالة Google
+             نفسها هو حذف إعلان أوتو من المانيفست — فحُذف meta-data
+             com.google.android.gms.car.application وملف automotive_app_desc.
+             لا تُعِده إلا مع تنفيذ MediaBrowserService كامل ومُختبَر في السيارة. -->
+
+        <!-- ودجت الشاشة الرئيسية: آخر درس + تشغيل/إيقاف. -->
+        <receiver
+            android:name=".widget.NowPlayingWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_now_playing_info" />
+        </receiver>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- «المشاركة إلى منبر»: استقبال صوتيات من أي تطبيق خارجي
+                 لفتح نموذج «شارك درساً» معبّأً بها مباشرة. -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="audio/*" />
+            </intent-filter>
+
+            <!-- «ساهم بالنص»: مشاركة صورة صفحة كتاب أو نصّ من تطبيق خارجي
+                 تفتح نموذج المساهمة بالنص المشروح مع اختيار الدرس. -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="minbar-adkassahk.vercel.app"
+                    android:pathPrefix="/lesson"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="minbar-adkassahk.vercel.app"
+                    android:pathPrefix="/my-submissions"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <!-- شاشة قصّ الصور: تتطلّب سمة AppCompat (بلاها تنهار فور فتحها)،
+             وبشريط علويّ (لا NoActionBar) لأنّ زرّ «تم» يسكن قائمة الشريط —
+             بلا شريط لا يظهر أيّ زرّ إتمام إطلاقاً. -->
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight"
+            tools:replace="android:exported" />
+
+        <service
+            android:name=".media.PlaybackService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <!-- MediaSessionService وحده: هو ما يربطه المتحكّم داخل التطبيق.
+                 حُذف android.media.browse.MediaBrowserService لأنّه المدخل
+                 الذي تكتشف به السيارة/المتصفّحات الخارجيّة التطبيق كمصدر
+                 وسائط، وهو سبب فحص أوتو الذي رفض النشر. -->
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="androidx.media3.session.MediaButtonReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- وظيفة تنزيل الدروس (أندرويد 14+): نقل بيانات بمبادرة المستخدم. -->
+        <service
+            android:name=".data.LessonDownloadJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            tools:targetApi="34" />
+
+        <service
+            android:name=".notification.MinbarMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
+    </queries>
+</manifest>

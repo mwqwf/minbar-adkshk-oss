@@ -1,0 +1,12 @@
+local.properties
+key.properties
+*.keystore
+*.jks
+google-services.json
+.env
+node_modules/
+build/
+.gradle/
+.idea/
+*.apk
+*.aab

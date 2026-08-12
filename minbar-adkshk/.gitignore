@@ -1,0 +1,21 @@
+/.gradle/
+/.kotlin/
+/.idea/
+/local.properties
+**/build/
+*.iml
+
+# Signing material must never be committed or packed with the project.
+/signing.properties
+/*.jks
+/*.keystore
+/key.properties
+
+# Build outputs and local logs (لا تُرفع: كبيرة وتُولَّد بالبناء)
+/release/
+*.apk
+*.aab
+*.log
+
+# Local test artifacts
+/artifacts/

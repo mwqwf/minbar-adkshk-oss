@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>درس صوتي — منبر ادكصهك</title>
+<meta name="description" content="استمع إلى هذا الدرس داخل تطبيق منبر ادكصهك — أرشيف صوتي للدروس العلمية. حمّله مجانًا من Google Play."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{--teal:#247172;--teal-dark:#184b4b;--navy:#020e1d;--bg:#f8fcfc;--gold:#d4af37}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:#123;
+       min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .card{background:#fff;border:1px solid #dcebeb;border-radius:24px;max-width:440px;width:100%;
+        padding:40px 28px;box-shadow:0 12px 40px rgba(24,75,75,.10)}
+  .logo{width:76px;height:76px;border-radius:22px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+        display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .logo svg{width:40px;height:40px;fill:#fff}
+  h1{font-size:22px;color:var(--teal-dark);margin-bottom:8px}
+  p{font-size:15px;line-height:1.9;color:#456;margin-bottom:22px}
+  .btn{display:block;width:100%;padding:14px 18px;border-radius:14px;font-size:16px;font-weight:700;
+       text-decoration:none;margin-bottom:10px}
+  .btn-secondary{background:#eaf4f4;color:var(--teal-dark)}
+  .gplay{display:flex;align-items:center;justify-content:center;gap:11px;background:var(--navy);color:#fff;
+         border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 18px;text-decoration:none;
+         line-height:1.25;margin-bottom:10px;transition:border-color .15s ease}
+  .gplay:hover{border-color:var(--gold)}
+  .gplay svg{width:24px;height:24px;flex:none}
+  .gplay .t{text-align:start}
+  .gplay .t small{display:block;font-size:11px;color:#c6dade;font-weight:600}
+  .gplay .t b{display:block;font-size:16px;font-weight:800}
+  .hint{font-size:12.5px;color:#8aa;margin-top:14px}
+  footer{margin-top:28px;font-size:12.5px;color:#9ab}
+  footer a{color:var(--teal);text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4zm-6 9a6 6 0 0 0 12 0h2a8 8 0 0 1-7 7.94V22h-2v-2.06A8 8 0 0 1 4 12h2z"/></svg>
+    </div>
+    <h1>هذا درس صوتي من منبر ادكصهك</h1>
+    <p>إن كان التطبيق مثبَّتاً على جهازك فسيُفتح الدرس مباشرة عند النقر على الرابط.
+       وإن لم يكن مثبَّتاً بعد، حمّله من Google Play ثم افتح الرابط من جديد.</p>
+    <a class="gplay" href="https://play.google.com/store/apps/details?id=com.ali.menbaradkshk" rel="noopener">
+      <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="#EA4335" d="M325.3 234.3 104.6 13.6 375 168.9z"/><path fill="#FBBC04" d="M410.9 186.4 375 168.9l-49.7 65.4 49.7 65.4 36.9-17.5c19.3-9.4 19.3-86.4-1-95.8z"/><path fill="#4285F4" d="M104.6 498.4 325.3 277.7 375 343.1z"/><path fill="#34A853" d="M104.6 13.6c-8.5 4.4-14.6 12.6-14.6 24.5v435.8c0 11.9 6.1 20.1 14.6 24.5l220.7-220.7z"/></svg>
+      <span class="t"><small>حمّله من</small><b>Google Play</b></span>
+    </a>
+    <a class="btn btn-secondary" href="/">تعرّف على المنصّة</a>
+    <div class="hint">أرشيف صوتي للدروس العلمية — بلا حساب، بلا إعلانات.</div>
+  </div>
+  <footer>© 2026 منبر ادكصهك · <a href="/privacy">سياسة الخصوصية</a></footer>
+</body>
+</html>

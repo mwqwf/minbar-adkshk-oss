@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      ⛔ لا تُعِد android:statusBarColor ولا android:navigationBarColor ولا
+      android:windowLightStatusBar هنا: كلّها **متوقّفة نهائياً** في أندرويد 15
+      (API 35) وتتجاهلها المنظومة، ويرصدها فحص Play فيحذّر من «واجهات متوقّفة».
+      وهي أصلاً بلا أثر لأن enableEdgeToEdge في MainActivity يدهسها وقت التشغيل.
+      تباين أيقونات الشريطين يُضبط برمجيّاً هناك تبعاً لسمة **التطبيق** نفسها
+      (لا سمة الجهاز)، فيبقى صحيحاً ولو خالفت سمةُ التطبيق سمةَ النظام.
+    -->
+    <style name="Theme.Minbar" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">@font/amiri</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

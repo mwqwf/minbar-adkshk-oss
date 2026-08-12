@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">منبر ادكصهك</string>
+    <string name="playback_channel_name">تشغيل الدروس</string>
+    <string name="content_channel_name">محتوى جديد</string>
+    <string name="ward_channel_name">الوِرد اليومي</string>
+    <string name="widget_play">تشغيل أو إيقاف</string>
+    <string name="widget_label">منبر — الآن يُشغَّل</string>
+    <string name="widget_empty">اختر درساً للاستماع</string>
+</resources>

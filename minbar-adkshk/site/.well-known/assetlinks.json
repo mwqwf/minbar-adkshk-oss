@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ali.menbaradkshk",
+      "sha256_cert_fingerprints": [
+        "AD:35:8A:5C:1B:70:32:49:C8:AF:4B:44:4F:42:9D:E1:5B:D7:9F:94:82:41:5E:DF:03:F6:6D:A0:78:90:C0:0A",
+        "BF:D6:D8:4D:5D:47:70:D0:B8:EB:83:A2:91:59:67:D5:CB:87:C5:A0:58:EC:FC:1A:FC:71:7C:1A:AC:A1:4D:FE",
+        "57:44:49:FE:3D:9F:B6:AC:20:28:91:88:9F:07:14:87:6D:75:34:7A:B5:06:77:09:C8:47:BA:67:D1:76:41:01"
+      ]
+    }
+  }
+]

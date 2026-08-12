@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>منبر ادكصهك | أرشيف صوتي للدروس العلمية</title>
+<meta name="description" content="منصّة تحفظ إرث مشايخ ادكصهك وتوفّر لهم منبرًا لنشر صوتياتهم. مئات الصوتيات العلمية الدينية وتسجيلات نادرة، محدّثة باستمرار."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--teal:#247172;--teal-dark:#184b4b;--navy:#020e1d;--bg:#f8fcfc;--gold:#d4af37;--ink:#12242e;--muted:#5b7480}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Cairo,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:50;background:rgba(248,252,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e2efef}
+  .nav{display:flex;align-items:center;gap:22px;padding:14px 0}
+  .brand{font-family:Amiri,serif;font-weight:700;font-size:22px;color:var(--teal-dark);text-decoration:none;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:inline-flex;align-items:center;justify-content:center}
+  .brand .dot svg{width:18px;height:18px;fill:#fff}
+  .nav a.link{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:600}
+  .nav a.link:hover{color:var(--teal)}
+  .nav .cta{margin-inline-start:auto;background:var(--teal);color:#fff;padding:9px 18px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14.5px}
+  .navlinks{display:flex;gap:22px}
+  @media(max-width:760px){.navlinks{display:none}}
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,#0a2b33 55%,var(--teal-dark) 100%);color:#fff;padding:72px 0 64px;text-align:center}
+  .chip{display:inline-block;background:rgba(212,175,55,.15);color:var(--gold);border:1px solid rgba(212,175,55,.4);padding:5px 16px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:18px}
+  .hero h1{font-family:Amiri,serif;font-size:clamp(28px,5vw,46px);line-height:1.5;margin-bottom:14px}
+  .hero p{max-width:640px;margin:0 auto 28px;color:#c6dade;font-size:16.5px}
+  .hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+  .btn{display:inline-block;padding:13px 26px;border-radius:14px;font-weight:800;text-decoration:none;font-size:15.5px}
+  .btn-gold{background:var(--gold);color:#231a00}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .hero .note{font-size:13px;color:#9db8bd}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:44px auto 0;max-width:820px}
+  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 10px}
+  .stat b{display:block;font-size:24px;color:var(--gold)}
+  .stat span{font-size:13.5px;color:#c6dade}
+  section{padding:64px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 40px}
+  .sec-head h2{font-family:Amiri,serif;font-size:clamp(24px,3.6vw,34px);color:var(--teal-dark);margin-bottom:8px}
+  .sec-head p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid #e2efef;border-radius:20px;padding:24px 20px;box-shadow:0 4px 18px rgba(24,75,75,.05)}
+  .card .ic{width:46px;height:46px;border-radius:14px;background:#e6f2f2;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:22px}
+  .card h3{font-size:17px;color:var(--teal-dark);margin-bottom:6px}
+  .card p{font-size:14px;color:var(--muted)}
+  #library{background:#eef7f7}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+  .tag{background:#fff;border:1px solid #d5e8e8;color:var(--teal-dark);padding:7px 18px;border-radius:999px;font-size:14px;font-weight:700}
+  .books{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .book{background:#fff;border:1px solid #e2efef;border-radius:20px;padding:22px;border-top:4px solid var(--gold)}
+  .book h3{font-family:Amiri,serif;font-size:19px;color:var(--teal-dark)}
+  .book .src{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+  .book .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .book .meta span{background:#e6f2f2;color:var(--teal-dark);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .step{background:#fff;border:1px solid #e2efef;border-radius:20px;padding:26px 20px;text-align:center}
+  .step .n{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .step h3{font-size:17px;color:var(--teal-dark);margin-bottom:6px}
+  .step p{font-size:14px;color:var(--muted)}
+  #download .cta-box{background:linear-gradient(150deg,var(--teal-dark),var(--navy));border-radius:26px;color:#fff;text-align:center;padding:52px 24px}
+  #download h2{font-family:Amiri,serif;font-size:clamp(24px,3.6vw,32px);margin-bottom:10px}
+  #download p{color:#c6dade;margin-bottom:24px}
+  .soon{font-size:13px;color:#9db8bd;margin-top:12px}
+  footer{background:var(--navy);color:#9db8bd;padding:30px 0;font-size:14px}
+  footer .row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  footer a{color:#c6dade;text-decoration:none;margin-inline-start:16px}
+  footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="dot"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4zm-6 9a6 6 0 0 0 12 0h2a8 8 0 0 1-7 7.94V22h-2v-2.06A8 8 0 0 1 4 12h2z"/></svg></span>منبر ادكصهك</a>
+    <nav class="navlinks">
+      <a class="link" href="/#features">المزايا</a>
+      <a class="link" href="/#library">المكتبة</a>
+      <a class="link" href="/#how">كيف يعمل</a>
+      <a class="link" href="/privacy">سياسة الخصوصية</a>
+    </nav>
+    <a class="cta" href="#download">حمّل التطبيق</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="chip">تطبيق صوتي بامتياز</span>
+    <h1>منبر ادكصهك — أرشيف مشايخكم في جيبك</h1>
+    <p>منصّة تحفظ إرث مشايخ ادكصهك وتوفّر لهم منبرًا لنشر صوتياتهم لأكبر قدر من الجمهور. مئات الصوتيات العلمية الدينية التي تشرح كتبًا مختلفة، وتسجيلات نادرة لأشهر المشايخ، محدّثة باستمرار.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="#download">ابدأ الاستماع الآن</a>
+      <a class="btn btn-ghost" href="#library">تصفّح المكتبة</a>
+    </div>
+    <div class="note">بلا حساب، بلا إعلانات، وبأقل قدر من البيانات.</div>
+    <div class="stats">
+      <div class="stat"><b>مئات</b><span>الصوتيات العلمية</span></div>
+      <div class="stat"><b>مشغّل</b><span>متقدّم بسرعات ونوم</span></div>
+      <div class="stat"><b>دون نت</b><span>تنزيل واستماع بلا اتصال</span></div>
+      <div class="stat"><b>مجانًا</b><span>بلا حساب ولا إعلانات</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>كل ما تحتاجه للاستماع والتعلّم</h2>
+      <p>تطبيق صوتي مُصمَّم لخدمة طالب العلم: أرشفة، وتنظيم، ونشر، وتحديث دائم.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">📚</div><h3>مكتبة مصنّفة بحسب العلوم</h3><p>مئات الصوتيات العلمية مرتّبة في أقسام وأقسام فرعية، تتصفّحها بحسب الفنّ أو تبحث فيها بحثًا عربيًّا ذكيًّا.</p></div>
+      <div class="card"><div class="ic">🎛️</div><h3>مشغّل صوتي متقدّم</h3><p>تحكّم كامل بسرعة التشغيل، ومؤقّت نوم، وقفزٌ للأمام والخلف، وتشغيلٌ تلقائي للدرس التالي، مع استمرار التشغيل في الخلفية.</p></div>
+      <div class="card"><div class="ic">🎧</div><h3>تنزيل واستماع دون إنترنت</h3><p>نزّل الدروس أو المفضّلة أو القسم كاملًا، واستمع إليها لاحقًا بلا اتصال في أي مكان.</p></div>
+      <div class="card"><div class="ic">📂</div><h3>قوائمك ومتابعتك</h3><p>قوائم تشغيل خاصّة بك، ومفضّلة، وسجلّ استماع، و«تابع الاستماع» يعيدك إلى حيث توقّفت في كل درس.</p></div>
+      <div class="card"><div class="ic">🎙️</div><h3>شارك درسًا</h3><p>لديك تسجيل نادر؟ ارفعه من التطبيق ليُراجَع ويُنشر على المنبر ويصل إلى الجمهور.</p></div>
+      <div class="card"><div class="ic">📖</div><h3>النص المشروح مع الصوتية</h3><p>اقرأ المتن أو المقطع الأصلي الذي تشرحه الصوتية داخل شاشة التشغيل، وساهم بنقل النص أو صورة صفحة الكتاب — يعتمده المشرفون قبل النشر.</p></div>
+      <div class="card"><div class="ic">🔔</div><h3>بلا حساب، وبأقل بيانات</h3><p>يعمل دون تسجيل حساب، بلا إعلانات، مع سمة فاتحة وداكنة وتكبير للخطّ وودجت لآخر درس على الشاشة الرئيسية.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="library">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>مكتبة صوتية منظّمة بحسب العلوم</h2>
+      <p>تصفّح الدروس حسب الفنّ العلمي، وادخل إلى أقسامه الفرعية، واستمع للشرح كاملًا بالترتيب.</p>
+    </div>
+    <div class="tags">
+      <span class="tag">العقيدة</span><span class="tag">الفقه الإسلامي وأصوله</span><span class="tag">الحديث</span><span class="tag">القرءان وعلومه</span><span class="tag">السيرة</span><span class="tag">الأخلاق والآداب العامة</span><span class="tag">اللغة العربية</span><span class="tag">المواعيظ</span>
+    </div>
+    <div class="books">
+      <div class="book"><h3>مصنّفة بحسب الفنّ</h3><div class="src">أقسام رئيسية وفرعية</div><div class="meta"><span>تصفّح بالعلم</span><span>ثم بالكتاب</span></div></div>
+      <div class="book"><h3>بحث عربي ذكيّ</h3><div class="src">يتجاهل الفروق الإملائية</div><div class="meta"><span>عن درس</span><span>أو شيخ</span></div></div>
+      <div class="book"><h3>تُحدَّث باستمرار</h3><div class="src">مكتبة حيّة</div><div class="meta"><span>دروس جديدة</span><span>وتسجيلات نادرة</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>كيف يعمل التطبيق؟</h2>
+      <p>ثلاث خطوات بسيطة تفصلك عن آلاف الساعات من العلم.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">١</div><h3>حمّل التطبيق</h3><p>ثبّت منبر ادكصهك على جهازك، وابدأ فورًا دون تسجيل حساب أو إدخال بيانات.</p></div>
+      <div class="step"><div class="n">٢</div><h3>اختر واستمع</h3><p>تصفّح المكتبة من الفنّ إلى قسمه الفرعي، أو ابحث عن درس أو شيخ، ثم استمع مباشرة أو نزّل ما تريد.</p></div>
+      <div class="step"><div class="n">٣</div><h3>شارك درسًا</h3><p>لديك تسجيل نادر؟ ارفعه ليُراجَع ويُنشر على المنبر ويصل إلى الجمهور.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>انضمّ إلى جمهور منبر ادكصهك</h2>
+      <p>حمّل التطبيق مجانًا واستمع إلى مئات الدروس العلمية، أينما كنت.</p>
+      <a class="btn btn-gold" href="#download">تحميل لأجهزة أندرويد</a>
+      <div class="soon">قريبًا على iOS</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>© 2026 منبر ادكصهك</div>
+    <div>
+      <a href="/#features">المزايا</a>
+      <a href="/#library">المكتبة</a>
+      <a href="/privacy">سياسة الخصوصية</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# انسخ هذا الملف إلى signing.properties ولا تضع الملف الحقيقي في Git.
+# استخدم مفتاح الرفع نفسه المسجّل للتطبيق الحالي في Google Play.
+storeFile=C:\\secure\\path\\to\\upload-key.jks
+storePassword=CHANGE_ME
+keyAlias=CHANGE_ME
+keyPassword=CHANGE_ME
